@@ -30,7 +30,6 @@ public class AddIncomeTest {
 
     @Test
     public void shouldBeAbleToAddIncome() {
-        dashboard.tacklePopIssue();
         dashboard.addIncome()
                 .fillDetails("Salary", "Cash", 120000, "Salary Nov-21");
         assertEquals(dashboard.getTotalIncome(), "$120,000.00");
