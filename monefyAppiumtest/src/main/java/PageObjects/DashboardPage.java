@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
 public class DashboardPage extends BasePage {
@@ -38,6 +39,9 @@ public class DashboardPage extends BasePage {
     @AndroidFindBy(id = "categories_button")
     private AndroidElement rightSideBarCategoriesButton;
 
+    @AndroidFindBy(id = "leftLinesImageView")
+    private AndroidElement expandTransactions;
+
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='com.monefy.app.lite:id/piegraph']//android.widget.ImageView[2]")
     private AndroidElement carExpenseIcon;
 
@@ -52,6 +56,14 @@ public class DashboardPage extends BasePage {
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.TextView")
     private AndroidElement popUps;
+
+    private AndroidElement getCategoryFromExpandedList(String category) {
+        return (AndroidElement) this.driver.findElement(By.xpath("//android.widget.ExpandableListView//android.widget.TextView[@text='" + category + "']"));
+    }
+
+    private AndroidElement getExpense(String note) {
+        return (AndroidElement) this.driver.findElement(By.xpath("//*[@resource-id='com.monefy.app.lite:id/textViewTransactionNote'][@text='" + note + "']"));
+    }
 
     public AddExpensePage addExpense() {
         waitUntilInvisible(this.snackbarMessageCancelButton);
@@ -89,5 +101,19 @@ public class DashboardPage extends BasePage {
 
     public String getTotalExpense() {
         return this.expenseAmountTextInChart.getText();
+    }
+
+    public void toggleListOfExpenses() {
+        waitUntilClickable(this.expandTransactions);
+        this.expandTransactions.click();
+    }
+
+    public void expandSpecificCategoryExpenses(String category) {
+        this.getCategoryFromExpandedList(category).click();
+    }
+
+    public AddExpensePage modifyExpense(String note) {
+        this.getExpense(note).click();
+        return new AddExpensePage(driver);
     }
 }

@@ -15,7 +15,7 @@ public class AddExpensePage extends BasePage {
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
 
-    @AndroidFindBy(accessibility = "amount_text")
+    @AndroidFindBy(id = "amount_text")
     private AndroidElement amountText;
 
     @AndroidFindBy(id = "textViewNote")
@@ -32,6 +32,9 @@ public class AddExpensePage extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Payment card']")
     private AndroidElement paymentModeCard;
+
+    @AndroidFindBy(id = "buttonKeyboardClear")
+    private AndroidElement amountClearButton;
 
     private AndroidElement calculatorNumberButton(char number) {
         String id = "buttonKeyboard" + number;
@@ -56,6 +59,13 @@ public class AddExpensePage extends BasePage {
         this.chooseCategoryButton.click(); //new UiSelector().text("CHOOSE CATEGORY")
         this.getCategoryButton(category).click();
         return new DashboardPage(driver);
+    }
+
+    public void clearAmount() {
+        int charLength = this.amountText.getText().toCharArray().length;
+        for (int i = 0; i <= charLength; i++) {
+            this.amountClearButton.click();
+        }
     }
 
     private void setPaymentMode(String mode) {

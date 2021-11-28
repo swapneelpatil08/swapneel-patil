@@ -1,3 +1,4 @@
+import PageObjects.AddExpensePage;
 import PageObjects.DashboardPage;
 import Utils.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
@@ -41,5 +42,18 @@ public class AddExpenseTest {
                 .addExpense()
                 .fillDetails("Car", "Cash", 4000, "Fuel bill");
         assertEquals(dashboard.getTotalExpense(), "$41,500.00");
+    }
+
+    @Test
+    public void shouldBeAbleToEditExpenses() {
+        dashboard.tacklePopIssue();
+        dashboard.addExpense().fillDetails("Bills", "Card", 800, "Electricity bill");
+        dashboard.toggleListOfExpenses();
+        dashboard.expandSpecificCategoryExpenses("Bills");
+        AddExpensePage addExpensePage = dashboard.modifyExpense("Electricity bill");
+        addExpensePage.clearAmount();
+        addExpensePage.fillDetails("Bills", "Card", 1200, "Updated Electricity bill");
+        dashboard.toggleListOfExpenses();
+        assertEquals(dashboard.getTotalExpense(), "$1,200.00");
     }
 }
