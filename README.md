@@ -58,6 +58,13 @@ This test will carry out the testing related to addition of various  income and 
 > - Should not show new expense category - Transfer.
 > - Click on Balance to see the details, there should be new entry Transfer from Cash. 
 
+- Modify existing expenses.
+- Test non-Pro user.
+    - should not be able to change the currency, should show pop up to buy Pro subscription.
+- Test with Pro user
+    - should be able to change the currency.
+    - should be able to add new categories.
+
 ## Duration
 2 hours.
 
@@ -65,7 +72,8 @@ This test will carry out the testing related to addition of various  income and 
 Swapneel Patil
 
 ## Bugs
-No Bugs found.
+Showing other expenses as well when I searched for "Car"
+![Bug Screenshot](https://i.imgur.com/EKre9sm_d.webp?maxwidth=760)
 
 ## Issues
 No open issues.
