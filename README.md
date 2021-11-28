@@ -72,8 +72,6 @@ This test will carry out the testing related to addition of various  income and 
 Swapneel Patil
 
 ## Bugs
-Showing other expenses as well when I searched for "Car"
+1. Showing other expenses as well when I searched for "Car"
 ![Bug Screenshot](https://i.imgur.com/EKre9sm_d.webp?maxwidth=760)
 
-## Issues
-No open issues.
