@@ -40,3 +40,8 @@ Test reports will be generated in `Target` directory in same project directory u
 ## Run tests
 Go to IntelliJ and Open `PetTest` from `src/test/java`. 
 ![Run Tests](https://i.imgur.com/t97rHnK_d.webp?maxwidth=760)
+
+### Issue:
+Unable to run tests from command line. Basically, maven is unable to identify the tests. I will fix it if I get sometime.
+
+> Note: I have submitted the code, as much as I could complete in given time.

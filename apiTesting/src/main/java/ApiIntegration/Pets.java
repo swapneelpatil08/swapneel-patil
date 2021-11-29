@@ -24,13 +24,13 @@ public class Pets {
         return apiRepository.response.jsonPath().getList("", Pet.class);
     }
 
-    public void addNewPet(String petName, String category, String status) {
+    public int addNewPet(String petName, String category, String status) {
         CategoryOrTag _categoryOrTag = new CategoryOrTag().setId(1).setName(category);
         List<CategoryOrTag> tags = new ArrayList<CategoryOrTag>();
         tags.add(_categoryOrTag);
 
         petDetails = new Pet()
-                .setId((int)(Math.random()*100))
+                .setId((int) (Math.random() * 100))
                 .setName(petName)
                 .setCategory(_categoryOrTag)
                 .setStatus(status)
@@ -39,16 +39,20 @@ public class Pets {
 
         apiRepository.Post(petDetails, RestResources.PET);
         assertEquals(200, apiRepository.getResponse().statusCode());
+        return petDetails.getId();
     }
 
-    public Pet getPetById() {
-        apiRepository.Get(RestResources.PET + "/" + petDetails.getId());
+    public Pet getPetById(int id, int expectedStatus) {
+        apiRepository.Get(RestResources.PET + "/" + id);
+        assertEquals(expectedStatus, apiRepository.response.statusCode());
+        if (expectedStatus == 200)
+            return apiRepository.getResponse().as(Pet.class);
+        else
+            return null;
+    }
+
+    public void deleteAPet(int id) {
+        apiRepository.Delete(RestResources.PET + "/" + id);
         assertEquals(200, apiRepository.response.statusCode());
-        return apiRepository.getResponse().as(Pet.class);
     }
-
-    public void verifyPetAdded() {
-        assertEquals(petDetails, getPetById());
-    }
-
 }
