@@ -3,7 +3,6 @@
     <test name="apiTesting">
         <classes>
             <class name="PetTest"></class>
-            <class name="UserTest"></class>
         </classes>
     </test>
 </suite>

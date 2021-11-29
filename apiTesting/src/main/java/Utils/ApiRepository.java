@@ -33,7 +33,7 @@ public class ApiRepository {
     }
 
     public void Get(String restURI) {
-        response = request().when().get(restURI).then().extract().response();
+        response = request().log().ifValidationFails().when().get(restURI).then().extract().response();
     }
 
     public void Get(String restResources, String queryKey, String queryValue) {
@@ -51,15 +51,15 @@ public class ApiRepository {
 
     public void Post(Object requestBody, String restURI) {
         String body = getJsonBody(requestBody);
-        response = request().body(body).when().post(restURI).then().extract().response();
+        response = request().body(body).log().ifValidationFails().when().post(restURI).then().extract().response();
     }
 
     public void Put(Object requestBody, String restURI) {
         String body = getJsonBody(requestBody);
-        response = request().body(body).when().put(restURI).then().extract().response();
+        response = request().body(body).log().ifValidationFails().when().put(restURI).then().extract().response();
     }
 
     public void Delete(String restURI) {
-        response = request().when().delete(restURI).then().extract().response();
+        response = request().log().ifValidationFails().when().delete(restURI).then().extract().response();
     }
 }

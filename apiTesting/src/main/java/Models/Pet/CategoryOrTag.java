@@ -1,9 +1,11 @@
 package Models.Pet;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-@Getter
+@Data
+@Accessors(chain = true)
 public class CategoryOrTag {
-    private String id;
+    private int id;
     private String name;
 }

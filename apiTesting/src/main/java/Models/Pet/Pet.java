@@ -1,15 +1,17 @@
 package Models.Pet;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
-@Getter
+@Data
+@Accessors(chain = true)
 public class Pet {
     private int id;
     private CategoryOrTag category;
     private String name;
     private List<String> photoUrls;
-    private CategoryOrTag tags;
+    private List<CategoryOrTag> tags;
     private String status;
 }
