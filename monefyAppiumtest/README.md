@@ -4,9 +4,9 @@ This automation project is developed using Appium and Java, to automate given Mo
 
 # Pre-requisites
 - Java _v8_
-- [Appium Server UI]("https://github.com/appium/appium-desktop/releases") _v1.22.0_
-- [Appium Inspector]("https://github.com/appium/appium-inspector/releases") _v2021.9.2_
-- [Android Studio]("https://developer.android.com/studio) _v2020.3.1_
+- [Appium Server UI](https://github.com/appium/appium-desktop/releases "Releases · appium/appium-desktop") _v1.22.0_
+- [Appium Inspector](https://github.com/appium/appium-inspector/releases "Releases · appium/appium-inspector") _v2021.9.2_
+- [Android Studio](https://developer.android.com/studio "Download Android Studio and SDK tools  |  Android Developers") _v2020.3.1_
 - IntelliJ IDEA
 
 # Setup
@@ -66,7 +66,7 @@ I follow `Test Pyramid` which tells about the unit tests, Service/API tests and 
 <br />
 ![Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png)
 <br />
-> Source: [The Practical Test Pyramid]("https://martinfowler.com/articles/practical-test-pyramid.html")
+> Source: [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html "The Practical Test Pyramid")
 
 For example, 
 * I have not added test to verify if correct balance is shown on UI, as this should be verified in unit tests.
